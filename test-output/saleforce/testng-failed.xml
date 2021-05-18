@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [saleforce]" guice-stage="DEVELOPMENT">
+  <test name="salesforce on chrome(failed)">
+    <parameter name="BrowserName" value="chrome"/>
+    <classes>
+      <class name="testcases.VerifyLoginFunctionality">
+        <methods>
+          <include name="setup"/>
+          <include name="setup"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
+          <include name="CreateReport"/>
+          <include name="CloseReport"/>
+          <include name="CreateReport"/>
+          <include name="CloseReport"/>
+          <include name="VerifyLoginErrorMessage02" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- testcases.VerifyLoginFunctionality -->
+    </classes>
+  </test> <!-- salesforce on chrome(failed) -->
+  <test name="salesforce on firefox(failed)">
+    <parameter name="BrowserName" value="firefox"/>
+    <classes>
+      <class name="testcases.VerifyLoginFunctionality">
+        <methods>
+          <include name="setup"/>
+          <include name="setup"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
+          <include name="CreateReport"/>
+          <include name="CloseReport"/>
+          <include name="CreateReport"/>
+          <include name="CloseReport"/>
+          <include name="VerifyLoginErrorMessage02" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- testcases.VerifyLoginFunctionality -->
+    </classes>
+  </test> <!-- salesforce on firefox(failed) -->
+</suite> <!-- Failed suite [saleforce] -->

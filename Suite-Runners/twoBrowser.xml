@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="saleforce">
+	<test name="salesforce on chrome">
+		<parameter name="BrowserName" value="chrome"></parameter>
+		<classes>
+			<class name="testcases.VerifyLoginFunctionality">
+	<!-- 			<methods>
+					<include name="VerifyLoginErrorMessage01"></include>
+					<exclude name="VerifyLoginErrorMessage02"></exclude>
+				</methods> -->
+			</class>
+		</classes>
+	</test>
+	<test name="salesforce on firefox">
+		<parameter name="BrowserName" value="firefox"></parameter>
+		<classes>
+			<class name="testcases.VerifyLoginFunctionality">
+				<!-- <methods> <include name="VerifyLoginErrorMessage01"></include> <exclude 
+					name="VerifyLoginErrorMessage02"></exclude> </methods> -->
+			</class>
+		</classes>
+	</test>
+</suite>
