@@ -19,9 +19,10 @@ import com.aventstack.extentreports.Status;
 
 import base.BaseTest;
 
-public class CommonUtilities {
-	
 
+public class CommonUtilities {
+
+	public DataUtilities oDataUtilities = new DataUtilities();
 	public void enterText(WebElement element, String textToEnter, String elementName) {
 		if (element.isDisplayed()) {
 			element.sendKeys(textToEnter);
@@ -40,7 +41,7 @@ public class CommonUtilities {
 			BaseTest.test.pass(msg + "is verified successfully");
 		} else {
 			BaseTest.test.fail(msg + " verification is failed");
-//			BaseTest.test.addScreenCaptureFromPath(takeScreenshot());
+			//			BaseTest.test.addScreenCaptureFromPath(takeScreenshot());
 		}
 	}
 
@@ -72,41 +73,113 @@ public class CommonUtilities {
 		File srcfile = screenshot.getScreenshotAs(OutputType.FILE);
 		File dstfile = new File(destinationPath);
 		FileUtils.copyFile(srcfile, dstfile);
-//        test.addScreenCaptureFromPath(destinationPath);
-//        test.fail("Login to homepage failed");
+		//        test.addScreenCaptureFromPath(destinationPath);
+		//        test.fail("Login to homepage failed");
 		return destinationPath;
 	}
 
-//	public void logintoSFDC(String username, String pass) throws InterruptedException, IOException {
-////        test = extent.createTest("logintoSFDC_TC02");
-//		WebElement username1 = BaseTest.driver.findElement(By.name("username"));
-//		enterText(username1, username, "Username");
-//		BaseTest.test.log(Status.INFO, "usernmae is enterd");
-//		WebElement password = BaseTest.driver.findElement(By.name("pw"));
-//		enterText(password, pass, "Password");
-//		BaseTest.test.log(Status.INFO, "Password field");
-//		WebElement loginButton = BaseTest.driver.findElement(By.id("Login"));
-//		clickonElement(loginButton, "LoginButton");
-//		Thread.sleep(5000);
-////		verifyText(BaseTest.driver.getTitle(), readPropertiesfile("Messages", "homepage.title"), "HomePage title");
-//	}
-	
+	//	public void logintoSFDC(String username, String pass) throws InterruptedException, IOException {
+	////        test = extent.createTest("logintoSFDC_TC02");
+	//		WebElement username1 = BaseTest.driver.findElement(By.name("username"));
+	//		enterText(username1, username, "Username");
+	//		BaseTest.test.log(Status.INFO, "usernmae is enterd");
+	//		WebElement password = BaseTest.driver.findElement(By.name("pw"));
+	//		enterText(password, pass, "Password");
+	//		BaseTest.test.log(Status.INFO, "Password field");
+	//		WebElement loginButton = BaseTest.driver.findElement(By.id("Login"));
+	//		clickonElement(loginButton, "LoginButton");
+	//		Thread.sleep(5000);
+	////		verifyText(BaseTest.driver.getTitle(), readPropertiesfile("Messages", "homepage.title"), "HomePage title");
+	//	}
+
 	public void logintoSFDC() throws InterruptedException, IOException {
 		DataUtilities oDataUtils = new DataUtilities();
 		WebElement username1 = BaseTest.driver.findElement(By.xpath(oDataUtils.ReadWebElementProperties("we.username.xpath")));
 		String username = oDataUtils.ReadAccountProperties("prodaccount.name");
 		enterText(username1, username, "Username");
 		BaseTest.test.log(Status.INFO, "usernmae is enterd");
-		
+
 		WebElement password = BaseTest.driver.findElement(By.xpath(oDataUtils.ReadWebElementProperties("we.password.xpath")));
 		String pass = oDataUtils.ReadAccountProperties("prodaccount.password");
 		enterText(password, pass, "Password");
 		BaseTest.test.log(Status.INFO, "Password field");
-		
+
 		WebElement loginButton = BaseTest.driver.findElement(By.xpath(oDataUtils.ReadWebElementProperties("we.login.xpath")));
 		clickonElement(loginButton, "LoginButton");
 		Thread.sleep(5000);
-//		verifyText(BaseTest.driver.getTitle(), readPropertiesfile("Messages", "homepage.title"), "HomePage title");
+		//		verifyText(BaseTest.driver.getTitle(), readPropertiesfile("Messages", "homepage.title"), "HomePage title");
+	}
+	//###############
+	public void usermenudrop(String Element) throws IOException {
+
+		List<WebElement> userMenuDropDowns = BaseTest.driver.findElements(By.xpath("//*[@id='userNavButton']"));
+		String[] expectedUserMenuDropDowns = {"My profile", "My Settings", "Developer Console","Logout"};
+		for (int i = 0; i < userMenuDropDowns.size(); i++) {
+			Assert.assertEquals(userMenuDropDowns.get(i).getText(), expectedUserMenuDropDowns[i]);
+			BaseTest.test.log(Status.INFO, expectedUserMenuDropDowns[i] + " is Verified");
+		}
+
+
+	}
+	//used method	
+	@SuppressWarnings("unused")
+	public boolean verifyUser(String[] ActualmenuItems) {
+
+		String[] ExpectedmenuItems = {"jyothi Poozhi","My Profile", "My Settings", "Developer Console",
+				"Switch to Lightning Experience", "Logout" };
+		boolean flag = false;
+		loop:   
+			for (int i = 1; i < ActualmenuItems.length; i++) {
+
+				if(ActualmenuItems[i].equals(ExpectedmenuItems[i])) {
+					flag = true;
+					BaseTest.test.log(Status.INFO, ExpectedmenuItems[i] + " is Verified");
+				}
+				else {
+					flag = false;
+					break loop;
+				}			
+			}   
+		Assert.assertTrue(flag);
+
+		return flag;
+
 	}
 
+	public boolean isFileDownloaded_Ext(String dirPath, String ext){
+		boolean flag=false;
+		File dir = new File(dirPath);
+		File[] files = dir.listFiles();
+		if (files == null || files.length == 0) {
+			flag = false;
+		}
+
+		for (int i = 1; i < files.length; i++) {
+			if(files[i].getName().contains(ext)) {
+				flag=true;
+			}
+		}
+		return flag;
+	}
+
+	//RandomScenarios
+	public boolean isTabPresent(WebElement rAllTabsDisplayed,boolean noTabPresent) throws IOException {
+
+		String[] rActualTabs = rAllTabsDisplayed.getText().toString().split("(?=[A-Z])");	
+		for(String s: rActualTabs) {
+			if(s.equals(oDataUtilities.ReadWebElementProperties("Random.workorders"))) {
+				noTabPresent = true;
+			}
+			else
+				noTabPresent = false;
+		}	
+		return noTabPresent;
+	}
+	public String getTextFromWebLement(String text) {
+		String s1 = text.split("\s")[1];
+		String s2 = text.split("\s")[2];
+		String s = s1 +" "+s2;
+		return s;
+
+	}
 }

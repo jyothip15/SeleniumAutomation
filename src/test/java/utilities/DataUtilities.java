@@ -7,14 +7,13 @@ import java.util.Properties;
 
 import base.BaseTest;
 
-public class DataUtilities {
+public  class DataUtilities {
 	
 	
 	public String ReadWebElementProperties(String sWebElementKey) throws IOException {
 		BaseTest.sProperties = new Properties();
 		FileInputStream fis = new FileInputStream(AppConstants.WEBELE_PROPERTYFILE_PATH);
 		BaseTest.sProperties.load(fis);
-
 		return BaseTest.sProperties.getProperty(sWebElementKey);
 		
 	}
@@ -36,6 +35,4 @@ public class DataUtilities {
 	}
 	
 	
-	
-
 }

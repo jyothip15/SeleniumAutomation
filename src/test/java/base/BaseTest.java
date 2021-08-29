@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -37,7 +38,8 @@ public class BaseTest {
 	public CommonUtilities oCommonUtilities = new CommonUtilities();
 	public DataUtilities oDataUtilities = new DataUtilities();
 //	public loginpage lp = new loginpage(BaseTest.driver);
-	public SoftAssert sa = new SoftAssert();
+	public  SoftAssert sa = new SoftAssert();
+	public  JavascriptExecutor js ;	
 	
 	@BeforeTest
 	public void setup() {
@@ -57,7 +59,7 @@ public class BaseTest {
 	}
 
 	public WebDriver getDriver(String BrowserName) {
-
+		
 		sBrowserName = BrowserName.toLowerCase();
 		switch (sBrowserName) {
 
@@ -80,6 +82,8 @@ public class BaseTest {
 			driver = null;
 
 		}
+		driver.manage().window().maximize();
+		js = (JavascriptExecutor) driver;
 		return driver;
 
 	}
