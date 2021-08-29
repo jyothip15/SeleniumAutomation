@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [opportyModule]" guice-stage="DEVELOPMENT">
+  <test name="opporty test on chrome(failed)">
+    <parameter name="BrowserName" value="chrome"/>
+    <classes>
+      <class name="testcases.VerifyOpportyModule">
+        <methods>
+          <include name="optyPipelineReport_17" invocation-numbers="0"/>
+          <include name="quarterlySummaryLink_19" invocation-numbers="0"/>
+          <include name="setup"/>
+          <include name="CreateReport"/>
+          <include name="CloseReport"/>
+          <include name="createNewOpty_16" invocation-numbers="0"/>
+          <include name="stuckOpportunityLink_18" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- testcases.VerifyOpportyModule -->
+    </classes>
+  </test> <!-- opporty test on chrome(failed) -->
+</suite> <!-- Failed suite [opportyModule] -->

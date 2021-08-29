@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [RandomScenarioModule]">
+  <test name="Randomtest on Chrome(failed)">
+    <parameter name="BrowserName" value="chrome"/>
+    <classes>
+      <class name="testcases.VerifyRandomScenarios">
+        <methods>
+          <include name="blockingEventCalenderRecurrance" invocation-numbers="0"/>
+          <include name="setup"/>
+          <include name="CreateReport"/>
+          <include name="CloseReport"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- testcases.VerifyRandomScenarios -->
+    </classes>
+  </test> <!-- Randomtest on Chrome(failed) -->
+</suite> <!-- Failed suite [RandomScenarioModule] -->

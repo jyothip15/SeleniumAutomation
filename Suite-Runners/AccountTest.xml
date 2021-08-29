@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="accountModule">
+	<test name="account test on chrome">
+		<parameter name="BrowserName" value="chrome"></parameter>
+		<classes>
+			<class name="testcases.VerifyAccountsModule">
+			</class>
+		</classes>
+	</test>
+</suite>

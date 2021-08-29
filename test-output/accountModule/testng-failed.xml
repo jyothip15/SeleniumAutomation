@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [accountModule]">
+  <test name="account test on chrome(failed)">
+    <parameter name="BrowserName" value="chrome"/>
+    <classes>
+      <class name="testcases.VerifyAccountsModule">
+        <methods>
+          <include name="setup"/>
+          <include name="createAccountReport_14" invocation-numbers="0"/>
+          <include name="CreateReport"/>
+          <include name="CloseReport"/>
+          <include name="createNewView_11" invocation-numbers="0"/>
+          <include name="editAccount_12" invocation-numbers="0"/>
+          <include name="mergeAccount_13" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- testcases.VerifyAccountsModule -->
+    </classes>
+  </test> <!-- account test on chrome(failed) -->
+</suite> <!-- Failed suite [accountModule] -->

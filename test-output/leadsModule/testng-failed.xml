@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [leadsModule]" guice-stage="DEVELOPMENT">
+  <test name="leads test on chrome(failed)">
+    <parameter name="BrowserName" value="chrome"/>
+    <classes>
+      <class name="testcases.VerifyLeadsModule">
+        <methods>
+          <include name="leadsNewView_24" invocation-numbers="0"/>
+          <include name="setup"/>
+          <include name="CloseReport"/>
+          <include name="CreateReport"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- testcases.VerifyLeadsModule -->
+    </classes>
+  </test> <!-- leads test on chrome(failed) -->
+</suite> <!-- Failed suite [leadsModule] -->

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [contactModule]" guice-stage="DEVELOPMENT">
+  <test name="Contact test on Chrome(failed)">
+    <parameter name="BrowserName" value="chrome"/>
+    <classes>
+      <class name="testcases.VerifyContactModule">
+        <methods>
+          <include name="setup"/>
+          <include name="CreateReport"/>
+          <include name="CloseReport"/>
+          <include name="createNewViewCancel_32" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- testcases.VerifyContactModule -->
+    </classes>
+  </test> <!-- Contact test on Chrome(failed) -->
+</suite> <!-- Failed suite [contactModule] -->
